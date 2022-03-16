@@ -24,7 +24,7 @@
         $('input[type=button]').click((evt)=>
         {
             createCookie("username", $('#username').val(), $('#days').val())
-            createCookie("password", $('#password').val(), $('#days').val())
+            createCookie("password", $('#password').val(), 0)
             storage("color", $("#color").val())
         })
         function createCookie(name, value, days)
