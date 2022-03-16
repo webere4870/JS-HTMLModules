@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h1>User Settings</h1>
+    <label for="">Username</label>
+    <input type="text" id="username">
+    <label for="">Password</label>
+    <input type="password" id="password">
+    
+    <label for="">BG Color</label>
+    <input type="color" id="color">
+    <label for="">Days</label>
+    <input type="text" id="days">
+    <input type="button" id="" value="Add">
+    <div><a href="./read.html">Read</a></div>
+    <script>
+        $('input[type=button]').click((evt)=>
+        {
+            createCookie("username", $('#username').val(), $('#days').val())
+            createCookie("password", $('#password').val(), $('#days').val())
+            storage("color", $("#color").val())
+        })
+        function createCookie(name, value, days)
+        {
+            let cookie = `${name}=${encodeURIComponent(value)}; max-age=${days * 24 * 3600}; `;
+            document.cookie = cookie;
+        }
+        function storage(key, value)
+        {
+            localStorage.setItem(key, value)
+        }
+    </script>
+</body>
+</html>
