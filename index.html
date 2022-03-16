@@ -24,12 +24,16 @@
         $('input[type=button]').click((evt)=>
         {
             createCookie("username", $('#username').val(), $('#days').val())
-            createCookie("password", $('#password').val(), "0")
+            createCookie("password", $('#password').val())
             storage("color", $("#color").val())
         })
         function createCookie(name, value, days)
         {
-            let cookie = `${name}=${encodeURIComponent(value)}; max-age=${days * 24 * 3600}; `;
+            let cookie = `${name}=${encodeURIComponent(value)}; `;
+            if(days)
+            {
+                cookie+=`max-age=${days * 24 * 3600};`
+            }
             document.cookie = cookie;
         }
         function storage(key, value)
